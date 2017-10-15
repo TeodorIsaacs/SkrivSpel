@@ -6,52 +6,9 @@ import java.util.Random;
 /**
  * Created by Teodor Isaacs on 2016-03-23.
  */
-public class Words {
-    private Functions f;
+public class FileHandler {
 
-    public Words(Functions f) {
-        this.f = f;
-    }
-
-    public ArrayList<String> getPhraseListOld(String nameOfFile) throws UnsupportedEncodingException {
-        FileReader fileReader = null;
-        BufferedReader bufferedReader = null;
-        ArrayList<String> fileStrings = new ArrayList<>();
-        String wholeFile = null;
-        if (!new File(nameOfFile).exists()) {
-            try {
-                new File(nameOfFile).createNewFile();
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
-        }
-        try {
-            bufferedReader = new BufferedReader(new InputStreamReader(
-                    new FileInputStream(nameOfFile), "UTF-8"));
-            try {
-                wholeFile = bufferedReader.readLine();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (bufferedReader != null)
-                    bufferedReader.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        if (wholeFile != null) {
-            for (int i = 0; i < wholeFile.split(" / ").length; i++) {
-                fileStrings.add(wholeFile.split(" / ")[i] + " ");
-            }
-        }
-        return shuffleList(fileStrings);
-    }
-
-    public ArrayList<String> getPhraseList(String nameOfFile) throws UnsupportedEncodingException {
+    public static ArrayList<String> getPhraseList(String nameOfFile) throws UnsupportedEncodingException {
         FileReader fileReader = null;
         BufferedReader bufferedReader = null;
         ArrayList<String> fileStrings = new ArrayList<>();
@@ -86,7 +43,7 @@ public class Words {
         return shuffleList(fileStrings);
     }
 
-    public boolean completedGame(ArrayList<String> allWordsList) {
+    public static boolean completedGame(ArrayList<String> allWordsList) {
         FileOutputStream fileWriter = null;
         BufferedWriter bufferedWriter = null;
         int index = 0;
@@ -161,7 +118,7 @@ public class Words {
         return word;
     }
 
-    private ArrayList<String> shuffleList(ArrayList<String> strings) {
+    private static ArrayList<String> shuffleList(ArrayList<String> strings) {
         Random random = new Random();
         ArrayList<String> shuffList = new ArrayList<String>();
         ArrayList<String> tempList = new ArrayList<String>(strings);

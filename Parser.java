@@ -10,7 +10,6 @@ public class Parser {
         this.f = f;
     }
 
-
     public void keyPressed(KeyEvent e) throws UnsupportedEncodingException {
         switch (f.state) {
             case SETUP:

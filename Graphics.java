@@ -3,15 +3,15 @@ import java.awt.*;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
-public class GameFrame extends JPanel {
+public class Graphics extends JPanel {
     private Functions f;
 
-    public GameFrame(Functions f) {
+    public Graphics(Functions f) {
         this.f = f;
     }
 
     @Override
-    public void paint(Graphics g) {
+    public void paint(java.awt.Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
 
         switch (f.state) {
@@ -108,7 +108,6 @@ public class GameFrame extends JPanel {
     }
 
     public static int textLen(Graphics2D g, String s) {
-        //g.setFont(new Font("Courier New", Font.PLAIN, Constants.TEXT_FONT_SIZE));
         return g.getFontMetrics().stringWidth(s);
     }
 

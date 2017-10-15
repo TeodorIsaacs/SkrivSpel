@@ -5,8 +5,6 @@ import java.util.ArrayList;
  * Created by Teodor Isaacs on 2016-04-01.
  */
 public class Functions {
-    private Parser p;
-    private Words w;
     public long startTime = System.currentTimeMillis();
     public long timeLastTyped = System.currentTimeMillis() + 2000;
     private int sentencesSinceLastPhrase = 0;
@@ -31,7 +29,7 @@ public class Functions {
     public void tick() throws UnsupportedEncodingException {
         if (timeLeftToWin() <= 0 && state == State.PLAY) {
             state = State.WINSCREEN;
-            w.completedGame(allTextRows);
+            FileHandler.completedGame(allTextRows);
             state = State.ENDSCREEN;
 
         }
@@ -53,9 +51,7 @@ public class Functions {
     public void reset() throws UnsupportedEncodingException {
         startTime = System.currentTimeMillis();
         timeLastTyped = System.currentTimeMillis() + 500;
-        p = new Parser(this);
-        w = new Words(this);
-        phrases = w.getPhraseList(activeLibrary);
+        phrases = FileHandler.getPhraseList(activeLibrary);
         phraseAt = 0;
         atRow = 0;
         allTextRows = new ArrayList<>();
@@ -74,7 +70,6 @@ public class Functions {
     }
 
     private long timeLeftToDeath() {
-
         return Constants.TYPE_TIMER - (System.currentTimeMillis() - timeLastTyped);
     }
 
@@ -87,7 +82,6 @@ public class Functions {
     }
 
     public void addText(String s) throws UnsupportedEncodingException {
-
         allTextRows.set(atRow, allTextRows.get(atRow) + s);
         increaseTimeLeftToDeath(s);
 
@@ -109,6 +103,7 @@ public class Functions {
         String[] rowAsArray = allTextRows.get(atRow).split(" ");
         String lastWord;
         String rowAsString;
+        //Här är bugfixen som vi pratade om
         if (rowAsArray.length == 1) {
             rowAsString = rowAsArray[0].substring(0, rowAsArray[0].length() - 2) + "-";
             lastWord = rowAsArray[0].substring(rowAsArray[0].length() - 2);

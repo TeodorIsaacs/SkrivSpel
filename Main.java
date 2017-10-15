@@ -24,7 +24,7 @@ public class Main {
 
         main.f = new Functions();
         main.p = new Parser(main.f);
-        GameFrame gf = new GameFrame(main.f);
+        Graphics gf = new Graphics(main.f);
         frame.add(gf);
         frame.setVisible(true);
         frame.addKeyListener(new KeyInput(main));
