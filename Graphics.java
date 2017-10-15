@@ -25,7 +25,7 @@ public class Graphics extends JPanel {
                 paintCompleted(g2d);
                 break;
             case WINSCREEN:
-                paintBackground(g2d);
+                paintCompleted(g2d);
                 break;
             case PLAY:
                 paintBackground(g2d);
@@ -54,9 +54,9 @@ public class Graphics extends JPanel {
                 g.setColor(Constants.COLOR);
             }
             g.drawRect(x, y, width, height);
-            g.setFont(new Font("Garamond", Font.PLAIN, Constants.TEXT_FONT_SIZE));
+            g.setFont(new Font("Garamond", Font.PLAIN, Constants.FONT_SIZE));
             int wordwidth = g.getFontMetrics().stringWidth(word);
-            g.drawString(word, Constants.SCREEN_WIDTH / 2 - wordwidth / 2, y + height / 2 + Constants.TEXT_FONT_SIZE / 3);
+            g.drawString(word, Constants.SCREEN_WIDTH / 2 - wordwidth / 2, y + height / 2 + Constants.FONT_SIZE / 3);
         }
     }
 
@@ -65,9 +65,10 @@ public class Graphics extends JPanel {
         paintBackground(g);
         g.setColor(Constants.COLOR);
         g.setFont(new Font("Garamond", Font.PLAIN, 20));
-        //TODO Fixa hårdkodningen här
-        g.drawString("Congratulations, you did it!", Main.SCREEN_WIDTH / 2 - 120, Main.SCREEN_HEIGHT / 2 - 10);
-        g.drawString("Talk to a moderator if you want to keep your masterpiece!", Main.SCREEN_WIDTH / 2 - 250, Main.SCREEN_HEIGHT / 2 + 15);
+        String message = "Congratulations, you did it!";
+        g.drawString(message, (Constants.SCREEN_WIDTH - textLen(g, message) )/ 2, Constants.SCREEN_HEIGHT / 3 - Constants.FONT_SIZE);
+        message = "Talk to a moderator if you want to keep your masterpiece!";
+        g.drawString(message, (Constants.SCREEN_WIDTH - textLen(g, message)) / 2, Constants.SCREEN_HEIGHT / 3);
     }
 
     private void paintTimeLeft(Graphics2D g) {
@@ -85,7 +86,7 @@ public class Graphics extends JPanel {
         paintBackground(g);
         g.setColor(Constants.COLOR);
         g.setFont(new Font(("Arial"), Font.PLAIN, 20));
-        g.drawString("Game Over! Press R to retry", Main.SCREEN_WIDTH / 2 - 140, Main.SCREEN_HEIGHT / 2 - 10);
+        g.drawString("Game Over! Press R to retry", Constants.SCREEN_WIDTH / 2 - 140, Constants.SCREEN_HEIGHT / 2 - 10);
     }
 
     private void paintText(Graphics2D g) throws UnsupportedEncodingException {
@@ -97,10 +98,10 @@ public class Graphics extends JPanel {
             row = allTextRows.size() - Constants.MAX_NUM_TEXT_ROWS;
         }
         g.setColor(Constants.COLOR);
-        g.setFont(new Font("Courier New", Font.PLAIN, Constants.TEXT_FONT_SIZE));
+        g.setFont(new Font("Courier New", Font.PLAIN, Constants.FONT_SIZE));
         //alla utom sista gången
         for (; iteration < Constants.MAX_NUM_TEXT_ROWS && iteration < allTextRows.size(); iteration++, row++) {
-            g.drawString(allTextRows.get(row), margin, Constants.TEXT_FONT_SIZE * (iteration + 2));
+            g.drawString(allTextRows.get(row), margin, Constants.FONT_SIZE * (iteration + 2));
         }
         if (textLen(g, allTextRows.get(row - 1)) > Constants.SCREEN_WIDTH - 2 * Constants.DISPLAY_MARGIN) {
             f.newRow();
@@ -113,13 +114,13 @@ public class Graphics extends JPanel {
 
     private void paintBackground(Graphics2D g) {
         g.setColor(Color.black);
-        g.fillRect(0, 0, Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
+        g.fillRect(0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
     }
 
     private void paintTime(Graphics2D g) {
         g.setColor(Constants.COLOR);
-        int timeFontSize = Constants.TEXT_FONT_SIZE/2;
+        int timeFontSize = Constants.FONT_SIZE /2;
         g.setFont(new Font(("Helvetica"), Font.PLAIN, timeFontSize));
-        g.drawString(String.valueOf(f.timeLeftToWin()/1000), Main.SCREEN_WIDTH - (int)(timeFontSize*2.5), Main.SCREEN_HEIGHT - timeFontSize);
+        g.drawString(String.valueOf(f.timeLeftToWin()/1000), Constants.SCREEN_WIDTH - (int)(timeFontSize*2.5), Constants.SCREEN_HEIGHT - timeFontSize);
     }
 }

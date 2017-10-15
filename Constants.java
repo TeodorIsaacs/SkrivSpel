@@ -26,13 +26,13 @@ public class Constants {
 
     public static final int DISPLAY_MARGIN = SCREEN_WIDTH / 20;
 
-    public static final int TEXT_FONT_SIZE = SCREEN_HEIGHT / 20;
+    public static final int FONT_SIZE = SCREEN_HEIGHT / 20;
 
-    public static final int TEXT_ROW_LENGHT = (SCREEN_WIDTH - 2 * DISPLAY_MARGIN) / (5 * TEXT_FONT_SIZE / 7);
+    public static final int TEXT_ROW_LENGHT = (SCREEN_WIDTH - 2 * DISPLAY_MARGIN) / (5 * FONT_SIZE / 7);
 
     public static final Color COLOR = Color.green;
 
-    public static final int MAX_NUM_TEXT_ROWS = (int) (SCREEN_HEIGHT / TEXT_FONT_SIZE * 0.9);
+    public static final int MAX_NUM_TEXT_ROWS = (int) (SCREEN_HEIGHT / FONT_SIZE * 0.9);
 
     public static final Font FONT = Font.getFont("Helvetica");
 }

@@ -5,8 +5,6 @@ import java.io.UnsupportedEncodingException;
 public class Main {
     public Parser p;
     public Functions f;
-    public static final int SCREEN_WIDTH = Constants.SCREEN_WIDTH;
-    public static final int SCREEN_HEIGHT = Constants.SCREEN_HEIGHT;
 
     public static void main(String[] args) throws UnsupportedEncodingException {
         Main main = new Main();
