@@ -1,0 +1,12 @@
+0:  Tid du har på dig att skriva angett i millisekunder, höj för att sänka svårighetsgrad
+3000
+1:  Namnet på första alternativet (behöver inte ändelsen ".dat"
+Svenska
+2:  Namnet på andra alternativet
+English
+3:  Namnet på tredje alternativet
+I skogen
+4:  Antal meningar innan en ny meningsstart kommer
+3
+5:  Total speltid i millisekunder:
+100000
